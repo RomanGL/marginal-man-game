@@ -1,4 +1,4 @@
-require_relative '../Utils'
+require_relative '../utils'
 
 class Condition
   attr_reader :field,
@@ -9,5 +9,10 @@ class Condition
     @field = Utils::check_type field, String
     @operation = Utils::check_type operation, String
     @value = value
+  end
+
+  # @return [Object]
+  def to_s
+    "#{@field} #{@operation} #{@value}"
   end
 end

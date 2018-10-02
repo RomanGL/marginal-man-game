@@ -1,5 +1,5 @@
-require_relative 'PlayerProperty'
-require_relative '../Utils'
+require_relative 'player_property'
+require_relative '../utils'
 
 class Player
   attr_reader :name
