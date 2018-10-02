@@ -1,2 +1,3 @@
-# marginal-man-game
-The text adventure about marginal russian man. Written on Ruby.
+# Marginal Valera
+The text adventure about marginal russian man. His name is Valera.
+Don't let Valera to die!
