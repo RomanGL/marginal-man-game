@@ -1,18 +1,20 @@
-require_relative 'model/player'
-require_relative 'model/player_action'
-require_relative 'model/player_property'
-require_relative 'model/action_result'
-require_relative 'model/condition'
+require_relative '../model/player'
+require_relative '../model/player_action'
+require_relative '../model/player_property'
+require_relative '../model/action_result'
+require_relative '../model/condition'
 
-module ConfigReader
+require 'json'
+require 'yaml'
+
+class ConfigReader
+  def initialize(config_file_path)
+    parse(config_file_path)
+  end
+
   def get_default_player
-    player_obj = @parsed['player']
-    Player.new player_obj['name'].to_s,
-               get_player_property(player_obj['health']),
-               get_player_property(player_obj['alcohol']),
-               get_player_property(player_obj['happiness']),
-               get_player_property(player_obj['fatigue']),
-               get_player_property(player_obj['money'])
+    player_hash = @parsed['player']
+    Player::create player_hash
   end
 
   def get_actions
@@ -24,23 +26,13 @@ module ConfigReader
     actions_obj.map {|act| get_action act}
   end
 
-  private
+  protected
 
-  def get_player_property(obj)
-    min = nil
-    max = nil
-    value = nil
-
-    unless obj.nil?
-      min = obj['min']
-      max = obj['max']
-      value = obj['value']
-    end
-
-    PlayerProperty.new min.nil? ? -Float::INFINITY : min.to_f,
-                       max.nil? ? Float::INFINITY : max.to_f,
-                       value.nil? ? 0 : value.to_f
+  def parse(config_file_path)
+    raise NotImplementedError, 'Method must be implemented in descendants.'
   end
+
+  private
 
   def get_action(obj)
     if obj.nil?
@@ -86,5 +78,24 @@ module ConfigReader
     Condition.new obj['field'].to_s,
                   obj['op'].to_s,
                   obj['value'].to_f
+  end
+end
+
+class ConfigReaderJSON < ConfigReader
+
+  protected
+
+  def parse(config_file_path)
+    data = File.read(config_file_path)
+    @parsed = JSON.parse(data)
+  end
+end
+
+class ConfigReaderYAML < ConfigReader
+
+  protected
+
+  def parse(config_file_path)
+    @parsed = YAML.load_file(config_file_path)
   end
 end
