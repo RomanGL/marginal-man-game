@@ -5,7 +5,7 @@ require_relative '../utils'
 require_relative '../invalid_operation_error'
 
 class PlayerContext
-  @player = nil
+  attr_reader :player
 
   def initialize(config_reader, saves_manager)
     @config_reader = Utils::check_type config_reader, ConfigReader
@@ -21,6 +21,8 @@ class PlayerContext
 
   def load
     raise_if_loaded
+
+    @player = @saves_manager.load_player
   end
 
   def load_default
