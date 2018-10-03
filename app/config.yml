@@ -1,0 +1,78 @@
+---
+player:
+  name: Valera
+  health:
+    min: 0
+    max: 100
+    value: 100
+  alcohol:
+    min: 0
+    max: 100
+    value: 0
+  happiness:
+    min: -10
+    max: 10
+    value: 0
+  fatigue:
+    min: 0
+    max: 100
+    value: 0
+  money:
+    min: 0
+    value: 100
+actions:
+- name: Go to sleep
+  result:
+  - field: player.health
+    change: 90
+    conditions:
+    - field: player.alcohol
+      op: "<"
+      value: 30
+  - field: player.happiness
+    change: -3
+    conditions:
+    - field: player.alcohol
+      op: ">"
+      value: 70
+  - field: player.alcohol
+    change: -50
+  - field: player.fatigue
+    change: -70
+- name: Go to work
+  conditions:
+  - field: player.alcohol
+    op: "<"
+    value: 50
+  - field: player.fatigue
+    op: "<"
+    value: 30
+  result:
+  - field: player.happiness
+    change: -5
+  - field: player.alcohol
+    change: -30
+  - field: player.money
+    change: 100
+  - field: player.fatigue
+    change: 70
+- name: Blow away the cobwebs
+  result:
+  - field: player.happiness
+    change: 1
+  - field: player.alcohol
+    change: -10
+  - field: player.fatigue
+    change: 10
+- name: Watch football on TV and drink a beer
+  result:
+  - field: player.happiness
+    change: 2
+  - field: player.alcohol
+    change: 30
+  - field: player.fatigue
+    change: 10
+  - field: player.health
+    change: -5
+  - field: money
+    change: -20
