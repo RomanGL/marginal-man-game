@@ -1,6 +1,7 @@
 require_relative 'game/saves_manager'
 require_relative 'game/config_reader'
 require_relative 'game/player_context'
+require_relative 'game/game_factory'
 require_relative 'utils'
 
 def start
@@ -29,10 +30,11 @@ def start
 end
 
 def new_game
+  game_context = GameFactory::get_new_game_context
 end
 
 def load_game
-
+  game_context = GameFactory::get_saved_game_context
 end
 
 start

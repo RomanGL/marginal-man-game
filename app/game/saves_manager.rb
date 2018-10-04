@@ -14,7 +14,7 @@ class SavesManager
     File.write @save_file_path, serialized
   end
 
-  def load_player()
+  def load_player
     parsed = parse
     Player.create parsed
   end
