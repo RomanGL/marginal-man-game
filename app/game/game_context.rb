@@ -13,4 +13,15 @@ class GameContext
     @saves_manager.save_player @player_context.player
     GameView::print_game_saved
   end
+
+  def start
+    update while true
+  end
+
+  private
+
+  def update
+    GameView::print_player_details @player_context.player
+    GameView::print_actions @actions
+  end
 end

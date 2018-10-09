@@ -31,33 +31,33 @@
       "name": "Go to sleep",
       "result": [
         {
-          "field": "player.health",
+          "field": "player.health.value",
           "change": 90,
           "conditions": [
             {
-              "field": "player.alcohol",
+              "field": "player.alcohol.value",
               "op": "<",
               "value": 30
             }
           ]
         },
         {
-          "field": "player.happiness",
+          "field": "player.happiness.value",
           "change": -3,
           "conditions": [
             {
-              "field": "player.alcohol",
+              "field": "player.alcohol.value",
               "op": ">",
               "value": 70
             }
           ]
         },
         {
-          "field": "player.alcohol",
+          "field": "player.alcohol.value",
           "change": -50
         },
         {
-          "field": "player.fatigue",
+          "field": "player.fatigue.value",
           "change": -70
         }
       ]
@@ -66,31 +66,31 @@
       "name": "Go to work",
       "conditions": [
         {
-          "field": "player.alcohol",
+          "field": "player.alcohol.value",
           "op": "<",
           "value": 50
         },
         {
-          "field": "player.fatigue",
+          "field": "player.fatigue.value",
           "op": "<",
           "value": 30
         }
       ],
       "result": [
         {
-          "field": "player.happiness",
+          "field": "player.happiness.value",
           "change": -5
         },
         {
-          "field": "player.alcohol",
+          "field": "player.alcohol.value",
           "change": -30
         },
         {
-          "field": "player.money",
+          "field": "player.money.value",
           "change": 100
         },
         {
-          "field": "player.fatigue",
+          "field": "player.fatigue.value",
           "change": 70
         }
       ]
@@ -99,15 +99,15 @@
       "name": "Blow away the cobwebs",
       "result": [
         {
-          "field": "player.happiness",
+          "field": "player.happiness.value",
           "change": 1
         },
         {
-          "field": "player.alcohol",
+          "field": "player.alcohol.value",
           "change": -10
         },
         {
-          "field": "player.fatigue",
+          "field": "player.fatigue.value",
           "change": 10
         }
       ]
@@ -116,23 +116,23 @@
       "name": "Watch football on TV and drink a beer",
       "result": [
         {
-          "field": "player.happiness",
+          "field": "player.happiness.value",
           "change": 2
         },
         {
-          "field": "player.alcohol",
+          "field": "player.alcohol.value",
           "change": 30
         },
         {
-          "field": "player.fatigue",
+          "field": "player.fatigue.value",
           "change": 10
         },
         {
-          "field": "player.health",
+          "field": "player.health.value",
           "change": -5
         },
         {
-          "field": "money",
+          "field": "player.money.value",
           "change": -20
         }
       ]
