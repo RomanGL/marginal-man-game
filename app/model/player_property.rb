@@ -12,6 +12,19 @@ class PlayerProperty < Hashable
     @value = value
   end
 
+  def change_value(other)
+    raise ArgumentError, 'Argument is not numeric' unless other.is_a? Numeric
+
+    res = @value + other
+    if res > @max
+      @value = @max
+    elsif res < @min
+      @value = @min
+    else
+      @value = res
+    end
+  end
+
   def +(other)
     raise ArgumentError, 'Argument is not numeric' unless other.is_a? Numeric
 

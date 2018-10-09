@@ -1,6 +1,5 @@
 require_relative 'game/saves_manager'
 require_relative 'game/config_reader'
-require_relative 'game/player_context'
 require_relative 'game/game_factory'
 require_relative 'game/game_view'
 require_relative 'utils'
@@ -36,7 +35,9 @@ def load_game
   begin
     game_context = GameFactory::get_saved_game_context
   rescue NoSaveFileError
+    Utils::clear_screen
     GameView::print_no_saved_game
+    return
   end
 
   Utils::clear_screen
