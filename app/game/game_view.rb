@@ -2,7 +2,7 @@ require_relative '../colorized_string'
 
 module GameView
   def self.print_game_saved
-    puts 'Game saved successful!'
+    puts 'Game saved successful!'.green
   end
 
   def self.print_no_saved_game
@@ -21,6 +21,8 @@ module GameView
       puts "#{i} - #{a.name}"
       i += 1
     end
+
+    puts "\nm - Menu"
   end
 
   def self.print_player_details(player)
@@ -43,5 +45,17 @@ module GameView
 
   def self.print_game_over
     puts "GAME OVER".red
+  end
+
+  def self.print_pause_menu
+    puts "PAUSED\n".green
+    puts '1 - Resume'
+    puts '2 - Save game'
+    puts '3 - Main menu'
+    puts '4 - Exit'
+  end
+
+  def self.print_save_game_question
+    puts 'Do you want to save the game? (y/n)'.green
   end
 end

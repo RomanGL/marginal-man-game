@@ -26,9 +26,7 @@ end
 
 def new_game
   game_context = GameFactory::get_new_game_context
-
-  Utils::clear_screen
-  game_context.start
+  start_game game_context
 end
 
 def load_game
@@ -40,8 +38,15 @@ def load_game
     return
   end
 
+  start_game(game_context)
+end
+
+def start_game(game_context)
   Utils::clear_screen
-  game_context.start
+  begin
+    game_context.start
+  rescue EndGameError
+  end
 end
 
 start
