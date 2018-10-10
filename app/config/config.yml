@@ -74,5 +74,5 @@ actions:
     change: 10
   - field: player.health
     change: -5
-  - field: money
+  - field: player.money
     change: -20

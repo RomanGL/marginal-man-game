@@ -10,4 +10,19 @@ module Utils
   def self.clear_screen
     Gem.win_platform? ? (system 'cls') : (system 'clear')
   end
+
+  def self.is_integer?(value)
+    Integer(value) != nil rescue false
+  end
+
+  def self.get_variable_by_field(start_obj, field)
+    fields = field.split('.')
+
+    variable = start_obj
+    fields.each do |field_name|
+      variable = variable.instance_variable_get "@" + field_name
+    end
+
+    variable
+  end
 end

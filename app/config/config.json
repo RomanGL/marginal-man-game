@@ -132,7 +132,7 @@
           "change": -5
         },
         {
-          "field": "money",
+          "field": "player.money",
           "change": -20
         }
       ]

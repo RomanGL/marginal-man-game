@@ -11,7 +11,6 @@ class Condition
     @value = value
   end
 
-  # @return [Object]
   def to_s
     "#{@field} #{@operation} #{@value}"
   end
