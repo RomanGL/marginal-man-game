@@ -32,7 +32,7 @@
       "result": [
         {
           "field": "player.health",
-          "change": 90,
+          "change": 10,
           "conditions": [
             {
               "field": "player.alcohol",
@@ -221,6 +221,63 @@
               "value": 70
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Invite a courtesan",
+      "conditions": [
+        {
+          "field": "player.money",
+          "op": ">=",
+          "value": 50
+        }
+      ],
+      "result": [
+        {
+          "field": "player.money",
+          "change": -50
+        },
+        {
+          "field": "player.health",
+          "change": -70
+        },
+        {
+          "field": "player.happiness",
+          "change": 7
+        }
+      ]
+    },
+    {
+      "name": "Visit a doctor",
+      "conditions": [
+        {
+          "field": "player.health",
+          "op": "<=",
+          "value": 50
+        },
+        {
+          "field": "player.money",
+          "op": ">",
+          "value": 20
+        }
+      ],
+      "result": [
+        {
+          "field": "player.health",
+          "change": 50
+        },
+        {
+          "field": "player.happiness",
+          "change": 2
+        },
+        {
+          "field": "player.fatigue",
+          "change": 5
+        },
+        {
+          "field": "player.money",
+          "change": -20
         }
       ]
     }

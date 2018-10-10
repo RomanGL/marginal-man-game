@@ -22,8 +22,8 @@ class GameContext
   private
 
   def update
-    GameView::print_player_details @player
     GameView::print_actions @actions
+    GameView::print_player_details @player
     action = get_action
     Utils::clear_screen
 
