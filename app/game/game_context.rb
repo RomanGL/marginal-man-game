@@ -1,4 +1,5 @@
 require_relative '../utils'
+require_relative '../errors'
 require_relative 'game_view'
 
 class GameContext
@@ -33,6 +34,10 @@ class GameContext
   def get_action
     GameView::print_input_invitation
     input = gets.chomp
+    if input == 'm'
+      update_pause_menu
+      return
+    end
     unless Utils::is_integer? input
       return nil
     end
@@ -42,6 +47,46 @@ class GameContext
       nil
     else
       @actions[id]
+    end
+  end
+
+  def update_pause_menu
+    while true
+      Utils::clear_screen
+      GameView::print_pause_menu
+      GameView::print_input_invitation
+
+      case gets.chomp.to_i
+      when 1
+        return
+      when 2
+        save
+        return
+      when 3
+        save if save_game?
+        raise EndGameError, 'Return to the main menu.'
+      when 4
+        save if save_game?
+        exit
+        return
+      end
+    end
+  end
+
+  def save_game?
+    while true
+      Utils::clear_screen
+      GameView::print_save_game_question
+      GameView::print_input_invitation
+
+      case gets.chomp
+      when 'y'
+        Utils::clear_screen
+        return true
+      when 'n'
+        Utils::clear_screen
+        return false
+      end
     end
   end
 
@@ -69,7 +114,7 @@ class GameContext
 
   def game_over?
     if @player.health.value <= @player.health.min ||
-       @player.fatigue.value >= @player.fatigue.max
+        @player.fatigue.value >= @player.fatigue.max
       return true
     end
   end

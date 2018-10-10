@@ -15,7 +15,7 @@ module GameFactory
   end
 
   def self.get_saved_game_context
-    raise NoSaveFileError, 'File save.yml does not exists.' unless File.exist? '../save.yml'
+    raise NoSaveFileError, 'File save.yml does not exists.' unless File.exist? 'save.yml'
 
     config_reader = ConfigReaderYAML.new 'config/config.yml'
     saves_manager = SavesManagerYAML.new 'save.yml'
