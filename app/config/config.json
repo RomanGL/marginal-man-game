@@ -136,6 +136,93 @@
           "change": -20
         }
       ]
+    },
+    {
+      "name": "Have a drink at the bar",
+      "result": [
+        {
+          "field": "player.happiness",
+          "change": 1
+        },
+        {
+          "field": "player.alcohol",
+          "change": 60
+        },
+        {
+          "field": "player.fatigue",
+          "change": 40
+        },
+        {
+          "field": "player.health",
+          "change": -10
+        },
+        {
+          "field": "player.money",
+          "change": -100
+        }
+      ]
+    },
+    {
+      "name": "Drink vodka with friends in the stairwell",
+      "result": [
+        {
+          "field": "player.happiness",
+          "change": 5
+        },
+        {
+          "field": "player.alcohol",
+          "change": 90
+        },
+        {
+          "field": "player.fatigue",
+          "change": 80
+        },
+        {
+          "field": "player.health",
+          "change": -80
+        },
+        {
+          "field": "player.money",
+          "change": -150
+        }
+      ]
+    },
+    {
+      "name": "Sing in the subway for money",
+      "result": [
+        {
+          "field": "player.happiness",
+          "change": 1
+        },
+        {
+          "field": "player.alcohol",
+          "change": 10
+        },
+        {
+          "field": "player.fatigue",
+          "change": 20
+        },
+        {
+          "field": "player.money",
+          "change": 10
+        },
+        {
+          "field": "player.money",
+          "change": 50,
+          "conditions": [
+            {
+              "field": "player.alcohol",
+              "op": ">",
+              "value": 40
+            },
+            {
+              "field": "player.alcohol",
+              "op": "<",
+              "value": 70
+            }
+          ]
+        }
+      ]
     }
   ]
 }
