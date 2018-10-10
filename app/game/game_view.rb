@@ -18,11 +18,29 @@ module GameView
     puts "\nYou can:".green
     i = 1
     actions.each do |a|
-      puts "#{i} - #{a.name}"
+      puts "#{i} - #{a.name}".yellow
+      print_conditions a.conditions, "" if a.conditions.count > 0
+      print_results a.results if a.results.count > 0
+      puts
       i += 1
     end
 
-    puts "\nm - Menu"
+    puts "\nm - Pause menu".yellow
+  end
+
+  def self.print_conditions(conditions, indent)
+    puts indent + "Conditions:"
+    conditions.each do |cond|
+      puts indent + "\t#{cond.field.sub('player.', '')} #{cond.operation} #{cond.value}"
+    end
+  end
+
+  def self.print_results(results)
+    puts "Results:"
+    results.each do |res|
+      puts "\t#{res.field.sub('player.', '')} #{res.change > 0 ? '+' : '-'} #{res.change > 0 ? res.change : -res.change}"
+      print_conditions res.conditions, "\t" if res.conditions.length > 0
+    end
   end
 
   def self.print_player_details(player)
@@ -40,7 +58,7 @@ module GameView
   end
 
   def self.print_invalid_condition(condition)
-    puts "Invalid condition: expected #{condition.field} #{condition.operation} #{condition.value}".red
+    puts "Invalid condition: expected #{condition.field.sub('player.', '')} #{condition.operation} #{condition.value}".red
   end
 
   def self.print_game_over

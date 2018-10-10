@@ -1,26 +1,30 @@
 class String
   def red
-    colorize(31)
+    colorize 31
   end
 
   def green
-    colorize(32)
+    colorize 32
   end
 
   def yellow
-    colorize(33)
+    colorize 33
   end
 
   def blue
-    colorize(34)
+    colorize 34
   end
 
   def pink
-    colorize(35)
+    colorize 35
   end
 
   def light_blue
-    colorize(36)
+    colorize 36
+  end
+
+  def white
+    colorize 37
   end
 
   protected
